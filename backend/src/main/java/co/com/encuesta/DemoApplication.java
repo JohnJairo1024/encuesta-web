@@ -36,16 +36,16 @@ public class DemoApplication {
         return () -> {
 
             //encuesta
-            encuestaRepository.save(new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date()));
-            encuestaRepository.save(new Encuesta(2L, "1025", "1025.gmail.com", "Buen estado...", new Date()));
-            encuestaRepository.save(new Encuesta(3L, "1026", "1026.gmail.com", "Buen estado...", new Date()));
-            encuestaRepository.save(new Encuesta(4L, "1027", "1027.gmail.com", "Buen estado...", new Date()));
-            encuestaRepository.save(new Encuesta(5L, "1028", "1028.gmail.com", "Buen estado...", new Date()));
+            encuestaRepository.save(new Encuesta("1024L", "1024.gmail.com", "Buen estado...", "Azus", new Date()));
+            encuestaRepository.save(new Encuesta("1025L", "1025.gmail.com", "Buen estado...", "Huawei", new Date()));
+            encuestaRepository.save(new Encuesta("1026L", "1026.gmail.com", "Buen estado...", "Compaq", new Date()));
+            encuestaRepository.save(new Encuesta("1027L", "1027.gmail.com", "Buen estado...", "Lenovo", new Date()));
+
 
 //            // pc
-            marcaPCRepository.save(new MarcaPC(1L, "Azus", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
-            marcaPCRepository.save(new MarcaPC(1L, "Lenovo", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
-            marcaPCRepository.save(new MarcaPC(5L, "Huawei", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
+//            marcaPCRepository.save(new MarcaPC(1L, "Azus", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
+//            marcaPCRepository.save(new MarcaPC(1L, "Lenovo", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
+//            marcaPCRepository.save(new MarcaPC(5L, "Huawei", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
 
             roleRepository.save(new Role(RoleName.valueOf("ROLE_USER")));
             roleRepository.save(new Role(RoleName.valueOf("ROLE_PM")));

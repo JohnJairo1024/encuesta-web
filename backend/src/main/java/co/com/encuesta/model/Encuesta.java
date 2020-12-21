@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 public class Encuesta {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idEncuesta")
     private Long idEncuesta;
 
@@ -25,8 +26,8 @@ public class Encuesta {
     @Column(name = "comentarios")
     private String comentarios;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "encuesta")
-    private List<MarcaPC> marcaPCS;
+    @Column(name = "marca")
+    private String marca;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fechaRespuesta")
@@ -35,11 +36,11 @@ public class Encuesta {
     public Encuesta() {
     }
 
-    public Encuesta(Long idEncuesta, String nroDocumento, String email, String comentarios, Date fechaRespuesta) {
-        this.idEncuesta = idEncuesta;
+    public Encuesta(String nroDocumento, String email, String comentarios, String marca, Date fechaRespuesta) {
         this.nroDocumento = nroDocumento;
         this.email = email;
         this.comentarios = comentarios;
+        this.marca = marca;
         this.fechaRespuesta = fechaRespuesta;
     }
 }
