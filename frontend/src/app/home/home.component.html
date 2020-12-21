@@ -11,13 +11,13 @@
 
 <br><br>
 
-<div [hidden]="submitted" class="container">
+<div [hidden]="submitted" class="container" *ngIf="info.token; else loggedOut">
   <form (ngSubmit)="onSubmit()">
     <br>
     <div class="form-group">
       <label style="font-weight: bold;" for="documento">Nro documento</label>
-      <input type="email" class="form-control" id="documento" placeholder="Nro documento.."
-        [(ngModel)]="encuesta.documento" name="documento">
+      <input type="text" class="form-control" id="documento" placeholder="Nro documento.."
+        [(ngModel)]="encuesta.nroDocumento" name="documento">
     </div>
     <br>
     <div class="form-group">
@@ -28,23 +28,23 @@
     <br>
     <div class="form-group">
       <label style="font-weight: bold;" for="comentario">Comentario</label>
-      <input type="textarea" class="form-control" id="comentario" placeholder="Comentario.."
-        [(ngModel)]="encuesta.comentario" name="comentario">
+      <input type="text" class="form-control" id="comentario" placeholder="Comentario.."
+        [(ngModel)]="encuesta.comentarios" name="comentario">
     </div>
     <br>
     <div class="form-group col-md-4">
-      <label style="font-weight: bold;" for="lista">Lista PC</label>
-      <select id="lista" class="form-control" [(ngModel)]="encuesta.lista" name="lista">
-        <option selected>Seleccione</option>
+      <label style="font-weight: bold;" for="marca">Lista PC</label>
+      <select id="lista" class="form-control" [(ngModel)]="encuesta.marca" name="marca">
+        <option [selected]>Seleccione</option>
         <option>Azus</option>
         <option>Lenovo</option>
       </select>
     </div>
-    <div class="form-group">
-      <label style="font-weight: bold;" for="fecha">Fecha</label>
-      <input type="date" class="form-control" id="fecha" placeholder="Fecha.." [(ngModel)]="encuesta.fecha"
-        name="fecha">
-    </div>
+    <!-- <div class=" form-group">
+          <label style="font-weight: bold;" for="fecha">Fecha</label>
+          <input type="date" class="form-control" id="fecha" placeholder="Fecha.." [(ngModel)]="encuesta.fecha"
+            name="fecha">
+    </div> -->
     <br>
     <button style="font-weight: bold;" type="submit" class="btn btn-primary">Enviar.</button>
     <br><br><br><br>

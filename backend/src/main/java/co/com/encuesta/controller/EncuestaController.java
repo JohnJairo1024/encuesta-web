@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,13 @@ public class EncuestaController {
 
     @PostMapping("/encuesta")
     public Encuesta createEmployee(@Valid @RequestBody Encuesta encuesta) {
-        return encuestaRepository.save(encuesta);
+        Encuesta encuestaDB = new Encuesta();
+        encuestaDB.setNroDocumento(encuesta.getNroDocumento());
+        encuestaDB.setEmail(encuesta.getEmail());
+        encuestaDB.setComentarios(encuesta.getComentarios());
+        encuestaDB.setMarca(encuesta.getMarca());
+        encuestaDB.setFechaRespuesta(new Date());
+        return encuestaRepository.save(encuestaDB);
     }
 
     @PutMapping("/encuesta/{id}")

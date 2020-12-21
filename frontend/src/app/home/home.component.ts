@@ -54,7 +54,10 @@ export class HomeComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['home']);
+    this.router.navigate(['home'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 
 }

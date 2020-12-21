@@ -1,8 +1,8 @@
 export class Employee {
-  id: number;
-  documento: string;
+
+  nroDocumento: string;
   email: string;
-  comentario: string;
-  lista: string;
-  fecha: string;
+  comentarios: string;
+  marca: string;
+
 }
