@@ -1,8 +1,8 @@
 package co.com.encuesta.message.response;
 
-import java.util.Collection;
-
 import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
 
 public class JwtResponse {
     private String token;

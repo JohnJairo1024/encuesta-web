@@ -1,10 +1,5 @@
 package co.com.encuesta.controller;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.validation.Valid;
-
 import co.com.encuesta.message.request.LoginForm;
 import co.com.encuesta.message.request.SignUpForm;
 import co.com.encuesta.message.response.JwtResponse;
@@ -24,11 +19,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

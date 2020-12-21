@@ -1,11 +1,60 @@
-<div *ngIf="info.token; else loggedOut">
-  <h5 class="text-primary">Your Information</h5>
+<br>
+<div class="container" *ngIf="info.token; else loggedOut">
+  <h6 class="text-primary">Tu Información</h6>
   <p>
-    <strong>Username:</strong> {{info.username}}<br/>
-    <strong>Roles:</strong> {{info.authorities}}<br />
+    <strong>usuario:</strong> {{info.username}}<br />
+    <strong>Rol:</strong> {{info.authorities}}<br />
     <strong>Token:</strong> {{info.token}}.
   </p>
   <button class="btn btn-secondary" (click)="logout()">Logout</button>
+</div>
+
+<br><br>
+
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+
+    <div class="form-row align-items-center">
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">Name</label>
+        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+        </div>
+      </div>
+      <div class="col-auto">
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+          <label class="form-check-label" for="autoSizingCheck">
+            Remember me
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 
 <ng-template #loggedOut>
