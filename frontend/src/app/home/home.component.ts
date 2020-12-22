@@ -1,5 +1,5 @@
-import { EmployeeService } from '../services/employee.service';
-import { Employee } from '../services/employee';
+import { EncuestaService } from '../services/encuesta.service';
+import { Encuesta } from '../services/encuesta';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,11 +12,11 @@ import { TokenStorageService } from '../auth/token-storage.service';
 })
 export class HomeComponent implements OnInit {
   info: any;
-  encuesta: Employee = new Employee();
+  encuesta: Encuesta = new Encuesta();
   submitted = false;
 
   constructor(
-    private employeeService: EmployeeService,
+    private encuestaService: EncuestaService,
     private router: Router,
     private token: TokenStorageService) { }
 
@@ -36,15 +36,15 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  newEmployee(): void {
+  newEncuesta(): void {
     this.submitted = false;
-    this.encuesta = new Employee();
+    this.encuesta = new Encuesta();
   }
 
   save() {
-    this.employeeService.createEmployee(this.encuesta)
+    this.encuestaService.createEncuesta(this.encuesta)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.encuesta = new Employee();
+    this.encuesta = new Encuesta();
     this.gotoList();
   }
 

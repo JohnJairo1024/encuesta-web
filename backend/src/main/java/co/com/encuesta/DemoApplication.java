@@ -46,7 +46,7 @@ public class DemoApplication {
 //            marcaPCRepository.save(new MarcaPC(1L, "Azus", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
 //            marcaPCRepository.save(new MarcaPC(1L, "Lenovo", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
 //            marcaPCRepository.save(new MarcaPC(5L, "Huawei", new Encuesta(1L, "1024", "1024.gmail.com", "Buen estado...", new Date())));
-
+//
 //            roleRepository.save(new Role(RoleName.valueOf("ROLE_USER")));
 //            roleRepository.save(new Role(RoleName.valueOf("ROLE_PM")));
 //            roleRepository.save(new Role(RoleName.valueOf("ROLE_ADMIN")));

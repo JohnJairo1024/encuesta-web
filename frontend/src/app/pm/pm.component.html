@@ -1,3 +1,46 @@
-<h4>Content from Server</h4>
+<!-- <h4>Content from Server</h4>
 {{board}}
-{{errorMessage}}
+{{errorMessage}} -->
+
+<div class="container" *ngIf="info.token; else loggedOut">
+    <br>
+    <br>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2>Lista de encuesta</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;">Nro Documento</th>
+                        <th style="text-align:center;">Email</th>
+                        <th style="text-align:center;">Comentario</th>
+                        <th style="text-align:center;">Marca</th>
+                        <th style="text-align:center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let encuesta of encuestas | async">
+                        <td>{{encuesta.nroDocumento}}</td>
+                        <td>{{encuesta.email}}</td>
+                        <td>{{encuesta.comentarios}}</td>
+                        <td>{{encuesta.marca}}</td>
+                        <td>{{encuesta.fecha}}</td>
+                        <td><button (click)="deleteEncuesta(encuesta.id)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="updateEncuesta(encuesta.id)" class="btn btn-info"
+                                style="margin-left: 10px">Actualizar</button>
+                            <button (click)="encuestaDetails(encuesta.id)" class="btn btn-dark"
+                                style="margin-left: 10px">Detalle</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #loggedOut>
+    Please login.
+</ng-template>

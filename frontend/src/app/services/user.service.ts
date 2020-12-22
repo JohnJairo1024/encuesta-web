@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Encuesta } from './encuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class UserService {
     return this.http.get(this.userUrl, { responseType: 'text' });
   }
 
-  getPMBoard(): Observable<string> {
+  getPMBoard(data: Observable<Encuesta[]>): Observable<string> {
     return this.http.get(this.pmUrl, { responseType: 'text' });
   }
 

@@ -7,6 +7,7 @@ import co.com.encuesta.repository.EncuestaRepository;
 import co.com.encuesta.security.services.EncuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,20 +27,23 @@ public class EncuestaController {
     private EncuestaService encuestaService;
 
     @GetMapping("/encuesta")
-    public List<Encuesta> getAllEmployees() {
+    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
+    public List<Encuesta> getAllEncuestas() {
         return encuestaRepository.findAll();
     }
 
     @GetMapping("/encuesta/{id}")
-    public ResponseEntity<Encuesta> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
+    public ResponseEntity<Encuesta> getEncuestaById(@PathVariable(value = "id") Long encuestaId)
             throws ResourceNotFoundException {
-        Encuesta encuesta = encuestaRepository.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + employeeId));
+        Encuesta encuesta = encuestaRepository.findById(encuestaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + encuestaId));
         return ResponseEntity.ok().body(encuesta);
     }
 
     @PostMapping("/encuesta")
-    public Encuesta createEmployee(@Valid @RequestBody Encuesta encuesta) {
+    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
+    public Encuesta createEncuesta(@Valid @RequestBody Encuesta encuesta) {
         Encuesta encuestaDB = new Encuesta();
         encuestaDB.setNroDocumento(encuesta.getNroDocumento());
         encuestaDB.setEmail(encuesta.getEmail());
@@ -50,10 +54,11 @@ public class EncuestaController {
     }
 
     @PutMapping("/encuesta/{id}")
-    public ResponseEntity<Encuesta> updateEmployee(@PathVariable(value = "id") Long employeeId,
+    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
+    public ResponseEntity<Encuesta> updateEncuesta(@PathVariable(value = "id") Long encuestaId,
                                                    @Valid @RequestBody Encuesta encuestadetalle) throws ResourceNotFoundException {
-        Encuesta encuesta = encuestaRepository.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + employeeId));
+        Encuesta encuesta = encuestaRepository.findById(encuestaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + encuestaId));
 
         encuesta.setIdEncuesta(encuestadetalle.getIdEncuesta());
         encuesta.setNroDocumento(encuestadetalle.getNroDocumento());
@@ -61,15 +66,16 @@ public class EncuestaController {
         encuesta.setComentarios(encuestadetalle.getComentarios());
         encuesta.setMarca(encuestadetalle.getMarca());
         encuesta.setFechaRespuesta(encuestadetalle.getFechaRespuesta());
-        final Encuesta updatedEmployee = encuestaRepository.save(encuesta);
-        return ResponseEntity.ok(updatedEmployee);
+        final Encuesta updatedEncuesta = encuestaRepository.save(encuesta);
+        return ResponseEntity.ok(updatedEncuesta);
     }
 
     @DeleteMapping("/encuesta/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
+    public Map<String, Boolean> deleteEncuesta(@PathVariable(value = "id") Long encuestaId)
             throws ResourceNotFoundException {
-        Encuesta Encuesta = encuestaRepository.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + employeeId));
+        Encuesta Encuesta = encuestaRepository.findById(encuestaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Encuesta not found for this id :: " + encuestaId));
 
         encuestaRepository.delete(Encuesta);
         Map<String, Boolean> response = new HashMap<>();
